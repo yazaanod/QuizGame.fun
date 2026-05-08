@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fun Quiz Test</title>
+
+<style>
+body{
+    margin:0;
+    font-family:system-ui, Arial;
+    background:#0a0f1f;
+    color:white;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+/* 🌐 Card */
+.card{
+    width:520px;
+    background:#111a2e;
+    padding:26px;
+    border-radius:18px;
+    box-shadow:0 0 50px rgba(0,255,255,0.12);
+}
+
+/* 🧠 Title */
+h1{
+    text-align:center;
+    color:#38bdf8;
+}
+
+/* 📊 Progress */
+.bar{
+    width:100%;
+    height:10px;
+    background:#1f2a44;
+    border-radius:999px;
+    overflow:hidden;
+    margin-bottom:12px;
+}
+
+.fill{
+    height:100%;
+    width:0%;
+    background:linear-gradient(90deg,#38bdf8,#a78bfa);
+    transition:0.5s ease;
+}
+
+/* 💬 Message */
+.msg{
+    text-align:center;
+    margin:10px 0;
+    color:#93c5fd;
+    font-weight:500;
+}
+
+/* 🧭 Steps */
+.step{display:none;}
+.active{display:block;animation:fade .3s ease;}
+
+@keyframes fade{
+    from{opacity:0;transform:translateY(6px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+/* ✍️ Inputs */
+input,select{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:10px;
+    font-size:15px;
+}
+
+/* 🔘 Button */
+button{
+    width:100%;
+    margin-top:14px;
+    padding:12px;
+    border:none;
+    border-radius:10px;
+    background:#38bdf8;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+/* 🌍 Result */
+.result{
+    margin-top:12px;
+    line-height:1.6;
+    color:#cbd5e1;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>🎮 Fun Quiz Test</h1>
+
+<div class="bar">
+    <div class="fill" id="progress"></div>
+</div>
+
+<div class="msg" id="msg">Let’s begin 👀</div>
+
+<!-- Q1 -->
+<div class="step active" id="q1">
+    <p>🐾 What animal do you feel like?</p>
+    <input id="animal">
+    <button onclick="next(2,10,'Keep going ⚡')">Next</button>
+</div>
+
+<!-- Q2 -->
+<div class="step" id="q2">
+    <p>🌍 What environment fits you best?</p>
+    <select id="world">
+        <option>Forest 🌲</option>
+        <option>City 🌆</option>
+        <option>Ocean 🌊</option>
+        <option>Space 🚀</option>
+        <option>Mountains 🏔️</option>
+    </select>
+    <button onclick="next(3,20,'Getting warm 🔥')">Next</button>
+</div>
+
+<!-- Q3 -->
+<div class="step" id="q3">
+    <p>🎮 What do you enjoy most?</p>
+    <select id="content">
+        <option>Gaming 🎮</option>
+        <option>Music 🎵</option>
+        <option>Anime 🎬</option>
+        <option>Coding 💻</option>
+        <option>Social Media 📱</option>
+    </select>
+    <button onclick="next(4,30,'Nice choice 👀')">Next</button>
+</div>
+
+<!-- Q4 -->
+<div class="step" id="q4">
+    <p>⚡ What is your energy type?</p>
+    <select id="energy">
+        <option>Calm 😌</option>
+        <option>Fast ⚡</option>
+        <option>Focused 🎯</option>
+        <option>Chaotic 💥</option>
+    </select>
+    <button onclick="next(5,40,'Keep up 💪')">Next</button>
+</div>
+
+<!-- Q5 -->
+<div class="step" id="q5">
+    <p>🧠 How do you think?</p>
+    <select id="mind">
+        <option>Creative 🎨</option>
+        <option>Strategic 🧠</option>
+        <option>Competitive 🏆</option>
+        <option>Relaxed 🌙</option>
+    </select>
+    <button onclick="next(6,55,'You’re doing great 🔥')">Next</button>
+</div>
+
+<!-- Q6 -->
+<div class="step" id="q6">
+    <p>🌌 Pick a power style</p>
+    <select id="power">
+        <option>Speed ⚡</option>
+        <option>Fire 🔥</option>
+        <option>Water 🌊</option>
+        <option>Shadow 🌑</option>
+        <option>Light ✨</option>
+    </select>
+    <button onclick="next(7,65,'Almost there 👀')">Next</button>
+</div>
+
+<!-- Q7 -->
+<div class="step" id="q7">
+    <p>🎯 What motivates you?</p>
+    <select id="motivation">
+        <option>Winning 🏆</option>
+        <option>Fun 🎮</option>
+        <option>Learning 📚</option>
+        <option>Freedom 🌍</option>
+    </select>
+    <button onclick="next(8,75,'Keep going ⚡')">Next</button>
+</div>
+
+<!-- Q8 -->
+<div class="step" id="q8">
+    <p>💼 What do you want to work as?</p>
+    <input id="job" placeholder="Type your dream job...">
+    <button onclick="next(9,88,'Getting close 👀')">Next</button>
+</div>
+
+<!-- Q9 -->
+<div class="step" id="q9">
+    <p>🌙 Are you more introvert or extrovert?</p>
+    <select id="personality">
+        <option>Introvert 🌙</option>
+        <option>Extrovert 🔥</option>
+        <option>Balanced ⚖️</option>
+    </select>
+    <button onclick="next(10,95,'Final step 💫')">Next</button>
+</div>
+
+<!-- FINAL -->
+<div class="step" id="q10">
+    <p>✨ Generate your profile</p>
+    <button onclick="finish()">Finish Quiz</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+</div>
+
+<script>
+
+let progress = document.getElementById("progress");
+let msg = document.getElementById("msg");
+
+/* 📊 Smooth navigation */
+function next(step, percent, message){
+
+    document.querySelectorAll(".step")
+    .forEach(s => s.classList.remove("active"));
+
+    document.getElementById("q"+step)
+    .classList.add("active");
+
+    progress.style.width = percent + "%";
+    msg.innerText = message;
+}
+
+/* 🌐 Final result */
+async function finish(){
+
+    progress.style.width = "100%";
+    msg.innerText = "Generating profile...";
+
+    let animal = document.getElementById("animal").value || "Unknown";
+    let world = document.getElementById("world").value;
+    let content = document.getElementById("content").value;
+    let energy = document.getElementById("energy").value;
+    let mind = document.getElementById("mind").value;
+    let power = document.getElementById("power").value;
+    let motivation = document.getElementById("motivation").value;
+    let job = document.getElementById("job").value || "Unknown";
+    let personality = document.getElementById("personality").value;
+
+    try{
+
+        let res = await fetch("https://ipapi.co/json/");
+        let data = await res.json();
+
+        document.getElementById("result").innerHTML =
+
+        "🌐 IP Address: <b>" + data.ip + "</b><br><br>" +
+        "📍 Location: " + data.city + ", " + data.country_name + "<br><br>" +
+
+        "🐾 Animal: " + animal + "<br>" +
+        "🌍 Environment: " + world + "<br>" +
+        "🎮 Activity: " + content + "<br>" +
+        "⚡ Energy: " + energy + "<br>" +
+        "🧠 Thinking Style: " + mind + "<br>" +
+        "🌌 Power: " + power + "<br>" +
+        "🎯 Motivation: " + motivation + "<br>" +
+        "💼 Job: " + job + "<br>" +
+        "🌙 Personality: " + personality + "<br><br>" +
+
+        "🏆 <b>Your profile is complete!</b>";
+
+        msg.innerText = "Done 🎉";
+
+    }catch(e){
+        document.getElementById("result").innerHTML =
+        "⚠ Failed to load data.";
+    }
+}
+
+</script>
+
+</body>
+</html>
